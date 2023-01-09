@@ -1,0 +1,29 @@
+______controle de acesso (portaria)
+- registrando data/hora | nome | cpf | empresa | desc do servico
+- exportar em pdf relatório de visitas do dia tal
+- sistema de login
+- controle de ent/saída prestadores de serviço;
+- etc.
+
+##  | todo:
+
+_backend:
+
+-   modelar banco de dados
+    . definir tabelas
+    . criar e rodar migrations
+    . criar os models
+
+-   criar sistema de autenticação básico c/ JWT
+
+-   definir fluxo do sistema
+
+_frontend:
+
+-   definir estrutura vueJs
+    ()desacoplado ou ()inertia
+
+    ____________________________
+    - usuários:
+        . porteiro
+        . admin
