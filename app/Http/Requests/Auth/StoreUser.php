@@ -25,9 +25,13 @@ class StoreUser extends FormRequest
     {
         return [
             'name'        => ['required', 'string', 'min:3', 'max:100'],
-            'password'    => ['required', 'min:8', 'max:16'],
             'email'       => ['required', 'email', 'max:255'],
-            'device_name' => ['required', 'string', 'max:200']
+            'password'    => ['required', 'min:8', 'max:16'],
+            'group'       => ['required', 'string'],
+            'image'       => ['required', 'string'],
+            'documento'   => ['required', 'string', 'min:11'],
+            'contato'     => ['required', 'string'],
+            'device_name' => ['required', 'string', 'max:50']
         ];
     }
 }

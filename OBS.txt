@@ -7,23 +7,32 @@ ______controle de acesso (portaria)
 
 ##  | todo:
 
-_backend:
+___backend:
 
--   modelar banco de dados
-    . definir tabelas
-    . criar e rodar migrations
-    . criar os models
+    [OK] -   modelar banco de dados
+        . definir tabelas
+        . criar e rodar migrations
+        . criar os models
 
--   criar sistema de autenticação básico c/ JWT
+    -   criar sistema de autenticação c/ Laravel Sanctum
+            . criar register            [OK]
+            . criar autenticar          [OK]
+            . criar logout
+            . criar esqueci senha
 
--   definir fluxo do sistema
+    - CRIAR rotas e controllers de CRUD
+            . empresas
+            . prestadores
+            . visitas
 
-_frontend:
+___frontend:
 
--   definir estrutura vueJs
-    ()desacoplado ou ()inertia
+    -   definir estrutura vueJs
+        ()desacoplado ou ()inertia
 
-    ____________________________
-    - usuários:
-        . porteiro
-        . admin
+___outros
+
+    [OK]- usuários:
+            . porteiro
+            . supervisor
+            . admin

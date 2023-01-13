@@ -13,8 +13,21 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/usuario/novo', [App\Http\Controllers\Api\Auth\RegisterController::class, 'store']);
+// Route::post('/register', [App\Http\Controllers\Api\Auth\RegisterController::class, 'store']); //só usar na criação inicial do projeto
+
+
+/* rotas de autenticação / registro  */
+
+Route::post('/login', [App\Http\Controllers\Api\Auth\AuthController::class, 'login']);
+Route::post('/register', [App\Http\Controllers\Api\Auth\RegisterController::class, 'store'])->middleware('auth:sanctum');
+Route::post('/logout', [App\Http\Controllers\Api\Auth\AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/me', [App\Http\Controllers\Api\Auth\AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Route::post('/usuario/novo', [App\Http\Controllers\Api\Auth\RegisterController::class, 'store']);
+
+    //rotas de usuário
+    Route::prefix('users')->group(function () {
+        Route::get('/', [App\Http\Controllers\Api\PermissionsController::class, 'getAll']);
+        Route::get('/mypermissions', [App\Http\Controllers\Api\PermissionsController::class, 'getMyPermissions']);
+    });
 });
