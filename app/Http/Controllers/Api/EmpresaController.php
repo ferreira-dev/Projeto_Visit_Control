@@ -1,31 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\Api\User;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Http\Requests\Empresa\StoreEmpresa;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class EmpresaController extends Controller
 {
-    public function getAll(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $empresas = Empresa::all();
 
-        $dados = User::all();
-
-        $users = $dados->map(function($user, $key){
-            $user->created_at = date('d/m/Y', strtotime($user->created_at));
-            $user->updated_at = date('d/m/Y', strtotime($user->updated_at));
-
-            return $user;
-        });
-        
-        if(! $users->count() ){
-
+        if(! $empresas->count()) {
             return response()->json([], 404);
         }
-        
-        return response()->json($users);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreEmpresa $request)
+    {
+        $dados = $request->validated();
+
+        $salvar = Empresa::create([$dados]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -34,13 +44,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        
-        if(!$user) {
-          return response()->json([], 404);
-        }
-
-        return response()->json($user, 200);
+        //
     }
 
     /**

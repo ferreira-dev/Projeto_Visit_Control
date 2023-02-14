@@ -17,10 +17,11 @@ ___backend:
     -   criar sistema de autenticação c/ Laravel Sanctum
             . criar register            [OK]
             . criar autenticar          [OK]
-            . criar logout
+            . criar logout              [OK]
             . criar esqueci senha
 
     - CRIAR rotas e controllers de CRUD
+            . users [x]
             . empresas
             . prestadores
             . visitas

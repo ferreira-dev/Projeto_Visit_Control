@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EmpresaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //rotas de usuário
     Route::prefix('users')->group(function () {
-        Route::get('/', [App\Http\Controllers\Api\PermissionsController::class, 'getAll']);
+        Route::get('/', [App\Http\Controllers\Api\User\UserController::class, 'getAll']);
+        Route::get('/{id}', [App\Http\Controllers\Api\User\UserController::class, 'show']);
         Route::get('/mypermissions', [App\Http\Controllers\Api\PermissionsController::class, 'getMyPermissions']);
+    });
+
+    //rotas de empresas
+    Route::prefix('empresas')->group(function () {
+        Route::apiResource('/', EmpresaController::class);
     });
 });
