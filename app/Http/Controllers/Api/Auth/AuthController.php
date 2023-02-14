@@ -30,12 +30,13 @@ class AuthController extends Controller
         }
 
         $permissions = Permissions::getGroupPermissions($user->group);
-        $token = $user->createToken($request->device_name, $permissions)->plainTextToken;
+        $token = $user->createToken($request->device_name, $permissions)
+                      ->plainTextToken;
 
         return response()->json([
             'user'       => $user,
             'token'      => $token,
-            'permissoes' => ''
+            'permissions' => $permissions,
         ]);
     }
 

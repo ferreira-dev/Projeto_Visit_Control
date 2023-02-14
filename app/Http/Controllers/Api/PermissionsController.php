@@ -17,11 +17,5 @@ class PermissionsController extends Controller
 
         return $permissions[$group];
     }
-
-    public function getMyPermissions(Request $request){
-
-        $permissions = $request->user()->currentAccessToken()->abilities;
-
-        return $permissions;
-    }
+    
 }

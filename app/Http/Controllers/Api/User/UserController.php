@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -50,9 +51,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUser $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $dados = $request->validated();
+
+        $update = $user->update($dados);
+
+        if(!$update) {
+            return response(['success' => false, 'message' => 'Erro ao atualizar.'], 500);
+        }
+
+        return response(['success' => true, 'message' => 'Atualizado com sucesso!', 'data' => $update]);
     }
 
     /**
