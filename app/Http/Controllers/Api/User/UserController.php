@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\ChangePassword;
 use App\Http\Requests\User\UpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -75,5 +77,21 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changePassword(ChangePassword $request, $id)
+    {
+        $user = User::find($id);
+
+        $dados = $request->validated();
+
+        $update = $user->update(['password' => Hash::make($request->password)]);
+
+        if(!$update) {
+            return response(['success' => false, 'message' => 'Erro ao atualizar.'], 500);
+        }
+
+        return response(['success' => true, 'message' => 'Atualizado com sucesso!', 'data' => $update]);
+
     }
 }

@@ -21,8 +21,10 @@ ___backend:
             . criar esqueci senha
 
     - CRIAR rotas e controllers de CRUD
-            . users [x]
-                - criar update e troca de senha
+            . users [ok]
+                - criar update e troca de senha [ok]
+                    - criar regra de senha forte (https://laravel.com/docs/9.x/validation#validating-passwords)
+                - criar lógica pro ADMIN trocar qualquer senha
             . empresas
             . prestadores
             . visitas

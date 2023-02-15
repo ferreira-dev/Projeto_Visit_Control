@@ -38,6 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/', [App\Http\Controllers\Api\User\UserController::class, 'getAll']);
         Route::get('/{id}', [App\Http\Controllers\Api\User\UserController::class, 'show']);
         Route::put('/{id}', [App\Http\Controllers\Api\User\UserController::class, 'update']);
+        Route::put('/changepassword/{id}', [App\Http\Controllers\Api\User\UserController::class, 'changePassword']);
     });
 
 /*

@@ -18,7 +18,7 @@ class CheckPassword implements InvokableRule
      */
     public function __invoke($attribute, $value, $fail)
     {
-        if(!Hash::check($value, Auth::user()->password)){
+        if(!Hash::check($value, auth()->user()->password)){
             $fail('Senha antiga incorreta.');
         }
     }
