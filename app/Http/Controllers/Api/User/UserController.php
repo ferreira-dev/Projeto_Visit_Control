@@ -79,19 +79,39 @@ class UserController extends Controller
         //
     }
 
-    public function changePassword(ChangePassword $request, $id)
+    public function changePassword(ChangePassword $request, $targetUser)
     {
-        $user = User::find($id);
+        $user = User::find($targetUser);
 
         $dados = $request->validated();
 
-        $update = $user->update(['password' => Hash::make($request->password)]);
+        $update = $user->update([
+            'password' => Hash::make($dados["password"])
+        ]);
 
         if(!$update) {
             return response(['success' => false, 'message' => 'Erro ao atualizar.'], 500);
         }
 
         return response(['success' => true, 'message' => 'Atualizado com sucesso!', 'data' => $update]);
+    }
 
+    private function checkChangeOthers($user, $targetUser){
+
+        if($user->id != $targetUser){
+
+            if( $user->tokenCan('users:manage') || $user->tokenCan('users:update')){
+                return true;
+            }
+        }
+
+        return false;
+
+        // if (!$this->checkChangeOthers($request->user(), $targetUser)) {
+        //     return response()->json([
+        //         'success' => false, 
+        //         'message' => 'Você não pode alterar dados de outro usuário.'
+        //     ], 403);
+        // };
     }
 }
