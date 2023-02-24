@@ -1,9 +1,10 @@
 ______controle de acesso (portaria)
-- registrando data/hora | nome | cpf | empresa | desc do servico
-- exportar em pdf relatório de visitas do dia tal
-- sistema de login
-- controle de ent/saída prestadores de serviço;
-- etc.
+
+    - registrando data/hora | nome | cpf | empresa | desc do servico
+    - exportar em pdf relatório de visitas do dia tal
+    - sistema de login
+    - controle de ent/saída prestadores de serviço;
+    - etc.
 
 ##  | todo:
 
@@ -33,7 +34,7 @@ ___backend:
 ___frontend:
 
     -   definir estrutura vueJs
-        ()desacoplado ou ()inertia
+        (x)desacoplado ou ()inertia
 
 ___outros
 
