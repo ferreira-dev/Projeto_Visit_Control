@@ -34,7 +34,9 @@ ___backend:
 ___frontend:
 
     -   definir estrutura vueJs
-        (x)desacoplado ou ()inertia
+        
+        . o frontend será baseado no template baixado (argon vue laravel)
+            com o uso de Vuex e VueRouter. (estudar através do vuefood pra entender toda a questão de integração, autenticação e uso do VueX . etc)
 
 ___outros
 
